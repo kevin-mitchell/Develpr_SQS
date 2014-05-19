@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <develprsqs translate="label">
+            <label>Develpr AWS SQS</label>
+            <tab>advanced</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>340</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <setup translate="label">
+                    <label>AWS SQS Setup</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <region translate="label">
+                            <label>Region</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Develpr_Sqs_Model_Source_Regions</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </region>
+                        <key translate="label">
+                            <label>Key</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key>
+                        <secret translate="label">
+                            <label>Secret</label>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </secret>
+                    </fields>
+                </setup>
+                <queues translate="label">
+                    <label>Queues</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <seperate_queues translate="label">
+                            <label>Seperate Queues</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[Should seperate queues be used for each data type?]]></comment>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </seperate_queues>
+                        <main translate="label">
+                            <label>Main Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>0</seperate_queues></depends>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </main>
+                        <customer translate="label">
+                            <label>Customer Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer>
+                        <customer_address translate="label">
+                            <label>Customer Address Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_address>
+                        <order translate="label">
+                            <label>Order Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order>
+                        <invoice translate="label">
+                            <label>Invoice Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice>
+                        <shipment translate="label">
+                            <label>Shipment Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shipment>
+                        <credit_memo translate="label">
+                            <label>Credit Memo Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </credit_memo>
+                        <product translate="label">
+                            <label>Credit Memo Queue URL</label>
+                            <frontend_type>text</frontend_type>
+                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product>
+                    </fields>
+                </queues>
+                <triggers translate="label">
+                    <label>Trigger Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <order_active translate="label">
+                            <label>Order</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_active>
+                        <customer_active translate="label">
+                            <label>Customer</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_active>
+                        <customer_address_active translate="label">
+                            <label>Customer Address</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </customer_address_active>
+                        <invoice_active translate="label">
+                            <label>Invoice</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invoice_active>
+                        <shipment_active translate="label">
+                            <label>Shipment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </shipment_active>
+                        <credit_memo_active translate="label">
+                            <label>Credit Memo</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </credit_memo_active>
+                        <product_active translate="label">
+                            <label>Product</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </product_active>                        
+                    </fields>
+                </triggers>
+            </groups>
+        </develprsqs>
+    </sections>
+</config>

@@ -1,0 +1,3 @@
+code                        app/code/community/Develpr/Sqs/
+Develpr_Sqs.xml          	app/etc/modules/Develpr_Sqs.xml
+lib/aws.phar                lib/develpr_sqs/aws.phar

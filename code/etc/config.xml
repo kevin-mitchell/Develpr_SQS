@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Develpr_Sqs>
+            <version>0.1.0</version>
+        </Develpr_Sqs>
+    </modules>
+    <global>
+        <models>
+            <develprsqs>
+                <class>Develpr_Sqs_Model</class>
+            </develprsqs>
+        </models>
+        <events>
+            <sales_order_place_after>
+                <observers>
+                    <develpr_sqs_model_observer>
+                        <type>singleton</type>
+                        <class>Develpr_Sqs_Model_Observer</class>
+                        <method>enqueueOrder</method>
+                    </develpr_sqs_model_observer>
+                </observers>
+            </sales_order_place_after>
+        </events>
+        <helpers>
+            <develprsqs>
+                <class>Develpr_Sqs_Helper</class>
+            </develprsqs>
+        </helpers>
+        <resources>
+            <develprsqs_setup>
+                <setup>
+                    <module>Develpr_Sqs</module>
+                </setup>
+            </develprsqs_setup>
+        </resources>
+    </global>
+    <crontab>
+        <jobs>
+            <develprsqs_process_pending>
+                <schedule>
+                    <cron_expr>*/5 * * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>develprsqs/cron::processPending</model>
+                </run>
+            </develprsqs_process_pending>
+
+        </jobs>
+    </crontab>
+</config>
