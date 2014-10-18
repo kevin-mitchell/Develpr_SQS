@@ -22,6 +22,15 @@
                     </develpr_sqs_model_observer>
                 </observers>
             </sales_order_place_after>
+            <customer_save_after>
+                <observers>
+                    <develpr_sqs_model_observer>
+                        <type>singleton</type>
+                        <class>Develpr_Sqs_Model_Observer</class>
+                        <method>enqueueCustomer</method>
+                    </develpr_sqs_model_observer>
+                </observers>
+            </customer_save_after>
         </events>
         <helpers>
             <develprsqs>

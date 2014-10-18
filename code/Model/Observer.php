@@ -19,14 +19,41 @@ class Develpr_Sqs_Model_Observer {
         } else if($observer instanceof Varien_Object) {
             $order = $observer;
         }
-		
-		
-		$helper = Mage::helper('develprsqs');
-        $configs =$helper->getConfigs();
 
-        if($configs['order_active'] == true) {
+		$helper = Mage::helper('develprsqs');
+        $configs = $helper->getConfigs();
+
+        if($configs['orderActive'] == true) {
 			// $helper->publish()
         }
     }
-	
+
+    public function enqueueCustomer($observer) {
+
+        /** @var Develpr_Sqs_Helper_Data $helper */
+        $helper = Mage::helper('develprsqs');
+        $configs = $helper->getConfigs();
+
+        if(!$configs['customerActive'])
+            return;
+
+        //Converting observer to a proper customer object
+        if($observer instanceof Varien_Event_Observer) {
+            $customer = $observer->getEvent()->getCustomer();
+        } else if($observer instanceof Varien_Object) {
+            $customer = $observer;
+        }
+
+        //Convert Customer object to flatter array
+        /** @var Develpr_SQS_Model_Converter_Customer $converter */
+        $converter = Mage::getModel('develprsqs/converter_customer');
+
+        $data = $converter->convert($customer);
+
+        /** @var Mage_Customer_Model_Customer $customer */
+
+        $helper->publish('customer', $data);
+
+    }
+
 }

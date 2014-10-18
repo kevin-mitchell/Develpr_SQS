@@ -39,28 +39,58 @@ class Develpr_Sqs_Helper_Data extends Mage_Core_Helper_Abstract {
 
         return $sqsClient;
     }
-	
+
+    public function publish($type, $message)
+    {
+        //todo: check type to see if a separate specific queue should be used
+        $client = $this->getSqsClient();
+
+        if(!is_string($message))
+        {
+            $message = json_encode($message);
+        }
+
+        $client->sendMessage(array(
+            'QueueUrl' => $this->getConfig('queueUrl'),
+            'MessageBody' => $message
+        ));
+    }
+
 	/**
-	 *	
+	 *	Check to make sure messages should be sent to SQS
 	 */
 	public function isEnabled()
 	{
 		return (bool)Mage::getStoreConfig('develprsqs/setup/active');
 	}
 
+    public function getConfig($configKey)
+    {
+        $configs = $this->getConfigs();
+        if(!array_key_exists($configKey, $configs))
+            return false;
+
+        return $configs[$configKey];
+    }
+
 
     /**
-     * Get configs from Magento Admin for the MQ module as an array
+     * Get configs from Magento Admin for the SQSb module as an array so we have them
      *
+     * todo: maybe don't do this? not really saving much time..
      * @return array
      */
     public function getConfigs() {
+
+        if(Mage::registry('develpr_sqs_configs'))
+            return Mage::registry('develpr_sqs_configs');
+
         $configs = array(
             'active' => Mage::getStoreConfig('develprsqs/setup/active'),
             'region' => Mage::getStoreConfig('develprsqs/setup/region'),
             'key' => Mage::getStoreConfig('develprsqs/setup/key'),
             'secret' => Mage::getStoreConfig('develprsqs/setup/secret'),
-            'queueUrl' => Mage::getStoreConfig('develprsqs/setup/queueUrl'),
+            'queueUrl' => Mage::getStoreConfig('develprsqs/queues/main'),
 
             'orderActive' => Mage::getStoreConfig('develprsqs/triggers/order_active'),
             'customerActive' => Mage::getStoreConfig('develprsqs/triggers/customer_active'),
@@ -79,8 +109,9 @@ class Develpr_Sqs_Helper_Data extends Mage_Core_Helper_Abstract {
             'productQueue' => Mage::getStoreConfig('develprsqs/queues/product'),
         );
 
+        Mage::register('develpr_sqs_configs', $configs);
+
         return $configs;
     }
-
 
 }
