@@ -43,16 +43,15 @@ class Develpr_Sqs_Model_Observer {
         } else if($observer instanceof Varien_Object) {
             $customer = $observer;
         }
-
-        //Convert Customer object to flatter array
-        /** @var Develpr_SQS_Model_Converter_Customer $converter */
-        $converter = Mage::getModel('develprsqs/converter_customer');
-
-        $data = $converter->convert($customer);
-
         /** @var Mage_Customer_Model_Customer $customer */
 
-        $helper->publish('customer', $data);
+        //Convert Customer object to flatter array
+        /** @var Develpr_Sqs_Model_Container_Customer $container */
+        $container = Mage::getModel('develprsqs/container_customer');
+
+        $container->setModel($customer);
+
+        $helper->publish($container);
 
     }
 

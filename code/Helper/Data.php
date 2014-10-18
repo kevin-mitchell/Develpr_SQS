@@ -40,10 +40,11 @@ class Develpr_Sqs_Helper_Data extends Mage_Core_Helper_Abstract {
         return $sqsClient;
     }
 
-    public function publish($type, $message)
+    public function publish(Develpr_Sqs_Model_Container_Abstract $container)
     {
-        //todo: check type to see if a separate specific queue should be used
         $client = $this->getSqsClient();
+
+        $message = $container->getMessageData();
 
         if(!is_string($message))
         {
@@ -51,7 +52,7 @@ class Develpr_Sqs_Helper_Data extends Mage_Core_Helper_Abstract {
         }
 
         $client->sendMessage(array(
-            'QueueUrl' => $this->getConfig('queueUrl'),
+            'QueueUrl' => $container->getQueueUrl(),
             'MessageBody' => $message
         ));
     }
@@ -90,7 +91,6 @@ class Develpr_Sqs_Helper_Data extends Mage_Core_Helper_Abstract {
             'region' => Mage::getStoreConfig('develprsqs/setup/region'),
             'key' => Mage::getStoreConfig('develprsqs/setup/key'),
             'secret' => Mage::getStoreConfig('develprsqs/setup/secret'),
-            'queueUrl' => Mage::getStoreConfig('develprsqs/queues/main'),
 
             'orderActive' => Mage::getStoreConfig('develprsqs/triggers/order_active'),
             'customerActive' => Mage::getStoreConfig('develprsqs/triggers/customer_active'),
@@ -99,7 +99,9 @@ class Develpr_Sqs_Helper_Data extends Mage_Core_Helper_Abstract {
             'shipmentActive' => Mage::getStoreConfig('develprsqs/triggers/shipment_active'),
             'creditMemoActive' => Mage::getStoreConfig('develprsqs/triggers/credit_memo_active'),
             'productActive' => Mage::getStoreConfig('develprsqs/triggers/product_active'),
-			
+
+            'separateQueues' => Mage::getStoreConfig('develprsqs/queues/separate_queues'),
+            'mainQueue' => Mage::getStoreConfig('develprsqs/queues/main'),
             'orderQueue' => Mage::getStoreConfig('develprsqs/queues/order'),
             'customerQueue' => Mage::getStoreConfig('develprsqs/queues/customer'),
             'customerAddressQueue' => Mage::getStoreConfig('develprsqs/queues/customer_address'),

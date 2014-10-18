@@ -62,20 +62,20 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>
                     <fields>
-                        <seperate_queues translate="label">
-                            <label>Seperate Queues</label>
+                        <separate_queues translate="label">
+                            <label>Separate Queues</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <comment><![CDATA[Should seperate queues be used for each data type?]]></comment>
+                            <comment><![CDATA[Should separate queues be used for each data type?]]></comment>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-                        </seperate_queues>
+                        </separate_queues>
                         <main translate="label">
                             <label>Main Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>0</seperate_queues></depends>
+                            <depends><separate_queues>0</separate_queues></depends>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -84,7 +84,7 @@
                         <customer translate="label">
                             <label>Customer Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <depends><separate_queues>1</separate_queues></depends>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -93,7 +93,7 @@
                         <customer_address translate="label">
                             <label>Customer Address Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <depends><separate_queues>1</separate_queues></depends>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -102,7 +102,7 @@
                         <order translate="label">
                             <label>Order Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <depends><separate_queues>1</separate_queues></depends>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -111,7 +111,7 @@
                         <invoice translate="label">
                             <label>Invoice Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <depends><separate_queues>1</separate_queues></depends>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -120,7 +120,7 @@
                         <shipment translate="label">
                             <label>Shipment Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <depends><separate_queues>1</separate_queues></depends>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -129,7 +129,7 @@
                         <credit_memo translate="label">
                             <label>Credit Memo Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <depends><separate_queues>1</separate_queues></depends>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -138,7 +138,7 @@
                         <product translate="label">
                             <label>Credit Memo Queue URL</label>
                             <frontend_type>text</frontend_type>
-                            <depends><seperate_queues>1</seperate_queues></depends>
+                            <depends><separate_queues>1</separate_queues></depends>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
