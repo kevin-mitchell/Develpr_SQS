@@ -45,7 +45,7 @@ class Develpr_Sqs_Model_Observer {
         }
         /** @var Mage_Customer_Model_Customer $customer */
 
-        //Convert Customer object to flatter array
+        //Convert Customer object to flat, useful data
         /** @var Develpr_Sqs_Model_Container_Customer $container */
         $container = Mage::getModel('develprsqs/container_customer');
 
